@@ -1,0 +1,11 @@
+grails:
+   profile: web-plugin
+   doc:
+      authors: 'Alvaro Sanchez-Mariscal'
+      license: 'Apache License 2.0'
+      title:   'Spring Security REST Plugin'
+info:
+   app:
+      name: '@info.app.name@'
+      version: '@info.app.version@'
+      grailsVersion: '@info.app.grailsVersion@'

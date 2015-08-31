@@ -21,7 +21,6 @@ import grails.plugin.springsecurity.rest.token.AccessToken
 import grails.plugin.springsecurity.rest.token.rendering.AccessTokenJsonRenderer
 import grails.plugin.springsecurity.rest.token.storage.TokenStorageService
 import org.apache.commons.codec.binary.Base64
-import org.codehaus.groovy.grails.commons.GrailsApplication
 import org.pac4j.core.client.BaseClient
 import org.pac4j.core.client.RedirectAction
 import org.pac4j.core.context.J2EContext
@@ -40,7 +39,6 @@ class RestOauthController {
     final String CALLBACK_ATTR = "spring-security-rest-callback"
 
     RestOauthService restOauthService
-    GrailsApplication grailsApplication
 
     TokenStorageService tokenStorageService
     def tokenGenerator
@@ -56,9 +54,9 @@ class RestOauthController {
 
         RedirectAction redirectAction = client.getRedirectAction(context, true, false)
         if (callback) {
-            try {                
+            try {
                 if (Base64.isBase64(callback.getBytes())){
-                    callback = new String(callback.decodeBase64(), StandardCharsets.UTF_8);
+                    callback = new String(callback.decodeBase64(), StandardCharsets.UTF_8)
                 }
                 log.debug "Trying to store in the HTTP session a user specified callback URL: ${callback}"
                 session[CALLBACK_ATTR] = new URL(callback).toString()
@@ -150,7 +148,4 @@ class RestOauthController {
             render status: HttpStatus.BAD_REQUEST, text: "Refresh token is required"
         }
     }
-
-
-
 }

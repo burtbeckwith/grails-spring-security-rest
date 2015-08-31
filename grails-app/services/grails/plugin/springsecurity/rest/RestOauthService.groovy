@@ -16,14 +16,13 @@
  */
 package grails.plugin.springsecurity.rest
 
+import grails.core.GrailsApplication
 import grails.plugin.springsecurity.rest.authentication.RestAuthenticationEventPublisher
 import grails.plugin.springsecurity.rest.oauth.OauthUser
 import grails.plugin.springsecurity.rest.oauth.OauthUserDetailsService
 import grails.plugin.springsecurity.rest.token.AccessToken
 import grails.plugin.springsecurity.rest.token.generation.TokenGenerator
 import grails.plugin.springsecurity.rest.token.storage.TokenStorageService
-import org.codehaus.groovy.grails.commons.GrailsApplication
-import org.codehaus.groovy.grails.web.mapping.LinkGenerator
 import org.pac4j.core.client.BaseClient
 import org.pac4j.core.context.WebContext
 import org.pac4j.core.credentials.Credentials
@@ -32,6 +31,8 @@ import org.pac4j.oauth.client.BaseOAuthClient
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetailsService
+
+import grails.web.mapping.LinkGenerator
 
 /**
  * Deals with pac4j library to fetch a user profile from the selected OAuth provider, and stores it on the security context

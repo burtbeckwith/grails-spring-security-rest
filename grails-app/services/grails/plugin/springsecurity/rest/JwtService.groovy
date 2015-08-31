@@ -23,10 +23,11 @@ import com.nimbusds.jwt.EncryptedJWT
 import com.nimbusds.jwt.JWT
 import com.nimbusds.jwt.JWTParser
 import com.nimbusds.jwt.SignedJWT
+
+import grails.core.GrailsApplication
 import grails.plugin.springsecurity.rest.token.generation.jwt.RSAKeyProvider
 import grails.util.Holders
 import groovy.util.logging.Slf4j
-import org.codehaus.groovy.grails.commons.GrailsApplication
 import org.springframework.security.core.userdetails.UserDetails
 
 import java.util.zip.GZIPInputStream
@@ -36,6 +37,8 @@ import java.util.zip.GZIPOutputStream
  * Helper to perform actions with JWT tokens
  */
 class JwtService {
+
+    static transactional = false
 
     String jwtSecret
     RSAKeyProvider keyProvider
@@ -90,14 +93,12 @@ class JwtService {
         objectIn.close()
         return userDetailsObject
     }
-
 }
-
 
 @Slf4j
 class ContextClassLoaderAwareObjectInputStream extends ObjectInputStream {
 
-    public ContextClassLoaderAwareObjectInputStream(InputStream is) throws IOException {
+    ContextClassLoaderAwareObjectInputStream(InputStream is) throws IOException {
         super(is)
     }
 
