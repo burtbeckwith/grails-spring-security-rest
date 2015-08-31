@@ -13,9 +13,5 @@ class BootStrap {
 
         UserDetails alvaro = new User('115537660854424164575', 'N/A', [new SimpleGrantedAuthority('ROLE_USER'), new SimpleGrantedAuthority('ROLE_ADMIN')])
         userDetailsService.createUser(alvaro)
-
-    }
-
-    def destroy = {
     }
 }
